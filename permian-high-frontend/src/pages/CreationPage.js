@@ -15,6 +15,11 @@ const CreationPage = () => {
     studentId: 0
   }
   const [formState, setFormState] = useState(initialFormState)
+  const [timeInterval, setTimeInterval] = useState(0)
+
+  setTimeout(() => {
+    setTimeInterval(timeInterval + 1)
+  }, 2000)
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.id]: e.target.value })
@@ -24,6 +29,8 @@ const CreationPage = () => {
     e.preventDefault()
     await axios.post(`${BASE_URL}courses`, formState)
     setFormState(initialFormState)
+    document.getElementById('gradeId').value = '0'
+    document.getElementById('studentId').value = '0'
   }
 
   const GetGrades = async () => {
@@ -41,7 +48,7 @@ const CreationPage = () => {
       setcourses(response.data)
     }
     apiCall()
-  }, [])
+  }, [timeInterval])
 
   useEffect(() => {
     const apiCall = async () => {
@@ -82,23 +89,18 @@ const CreationPage = () => {
           Grade:
         </label>
 
-        <select
-          className="input"
-          type="text"
-          id="grade"
-          onChange={handleChange}
-        >
+        <select className="input" id="gradeId" onChange={handleChange}>
           <option value="0"></option>
           {grade.map((scores) => (
-            <option id="gradeId" value={scores.id} key={scores.id}>
+            <option value={parseInt(scores.id)} key={scores.id}>
               {scores.score}
             </option>
           ))}
         </select>
-        <select id="students" onChange={handleChange}>
-          <option></option>
+        <select id="studentId" onChange={handleChange}>
+          <option value="0"></option>
           {students.map((student) => (
-            <option id="studentId" value={student.id} key={student.id}>
+            <option value={parseInt(student.id)} key={student.id}>
               {student.name}
             </option>
           ))}
@@ -115,7 +117,7 @@ const CreationPage = () => {
         ))}
         <form onSubmit={handleSubmit2}>
           <select id="course" onChange={handleId}>
-            <option></option>
+            <option value="0"></option>
             {courses.map((course) => (
               <option value={course.id} key={course.id}>
                 {course.name}
