@@ -1,17 +1,23 @@
 import './App.css'
 import { Route, Routes } from 'react-router'
-import './pages/Home'
-import './pages/Students'
-import './pages/CreationPage'
+import Home from './pages/Home'
+import Students from './pages/Students'
+import CreationPage from './pages/CreationPage'
+import Nav from './components/Nav'
 
-function App() {
-  ;<main>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="" element={<Students />} />
-      <Route path="" element={<CreationPage />} />
-    </Routes>
-  </main>
+const App = () => {
+  return (
+    <main>
+      <header className="header">
+        <Nav />
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="" element={<Students />} />
+        <Route path="" element={<CreationPage />} />
+      </Routes>
+    </main>
+  )
 }
 
 export default App
