@@ -10,10 +10,16 @@ const Students = () => {
     email: '',
     studentId: ''
   })
-  let sum = 0
-  let A = 4
-  let B = 3
-  let C = 2
+  const [timeInterval, setTimeInterval] = useState(0)
+
+  setTimeout(() => {
+    setTimeInterval(timeInterval + 1)
+  }, 2000)
+
+  // let sum = 0
+  // let A = 4
+  // let B = 3
+  // let C = 2
 
   useEffect(() => {
     const apiCall = async () => {
@@ -29,7 +35,17 @@ const Students = () => {
       setGrades(response.data)
     }
     apiCall()
-  }, [])
+  }, [timeInterval])
+
+  const handleChange = (evt) => {
+    setNewStudent({ ...newStudent, [evt.target.id]: evt.target.value })
+  }
+  const handleSubmit = async (evt) => {
+    evt.preventDefault()
+    let response = await axios.post(`${BASE_URL}students`)
+    console.log(response)
+    setNewStudent({ name: '', email: '', studentId: '' })
+  }
 
   const getGPA = () => {
     grades.map((grade) => {
@@ -40,13 +56,24 @@ const Students = () => {
   }
   return (
     <div>
-      <form>
-        <input id="name" placeholder="name" value={newStudent.name}></input>
-        <input id="email" placeholder="email" value={newStudent.email}></input>
+      <form onSubmit={handleSubmit}>
+        <input
+          id="name"
+          placeholder="name"
+          value={newStudent.name}
+          onChange={handleChange}
+        ></input>
+        <input
+          id="email"
+          placeholder="email"
+          value={newStudent.email}
+          onChange={handleChange}
+        ></input>
         <input
           id="studentId"
           placeholder="student ID"
           value={newStudent.studentId}
+          onChange={handleChange}
         ></input>
         <button type="submit">Add Student</button>
       </form>
