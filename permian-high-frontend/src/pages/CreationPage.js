@@ -51,7 +51,7 @@ const CreationPage = () => {
   }, [])
 
   const handleChange2 = (evt) => {
-    setCourseId({ studentId: evt.target.value })
+    setCourseId({ studentId: parseInt(evt.target.value) })
   }
   const handleId = (evt) => {
     setSearch(evt.target.value)
