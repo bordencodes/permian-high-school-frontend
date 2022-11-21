@@ -11,7 +11,8 @@ const CreationPage = () => {
   const [search, setSearch] = useState()
   const initialFormState = {
     name: '',
-    grade: ''
+    gradeId: 0,
+    studentId: 0
   }
   const [formState, setFormState] = useState(initialFormState)
 
@@ -89,11 +90,20 @@ const CreationPage = () => {
         >
           <option value="0"></option>
           {grade.map((scores) => (
-            <option value={scores.id} key={scores.id}>
+            <option id="gradeId" value={scores.id} key={scores.id}>
               {scores.score}
             </option>
           ))}
         </select>
+        <select id="students" onChange={handleChange}>
+          <option></option>
+          {students.map((student) => (
+            <option id="studentId" value={student.id} key={student.id}>
+              {student.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Submit</button>
       </form>
       <div>
         {courses.map((course) => (
