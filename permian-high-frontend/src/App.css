@@ -17,8 +17,7 @@
 }
 
 .navbar {
-    display: flex inline;
-    flex-direction: row;
+    display: flex;
     justify-content: space-evenly;
     font-size: 2.5vh;
     width: 100%;
