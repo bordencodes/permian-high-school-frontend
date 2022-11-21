@@ -1,0 +1,14 @@
+form {
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.input {
+    height: 3vh;
+    width: 10vw;
+    text-align: center;
+  }
+

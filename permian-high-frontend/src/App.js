@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Students from './pages/Students'
 import CreationPage from './pages/CreationPage'
 import Nav from './components/Nav'
+import './styling.css'
 
 const App = () => {
   return (

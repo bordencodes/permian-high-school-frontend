@@ -8,10 +8,10 @@ const Home = () => {
       </div>
       <div className="school-grid">
         <div className="cell1">School Info</div>
-        <Link to={'/'}>
+        <Link to={'/students'}>
           <div className="cell2">Students</div>
         </Link>
-        <Link to={'/'}>
+        <Link to={'/courses'}>
           <div className="cell3">Courses</div>
         </Link>
         <div className="cell4">Permian Atletics</div>
