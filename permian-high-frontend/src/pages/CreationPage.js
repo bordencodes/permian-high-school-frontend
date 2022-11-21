@@ -75,7 +75,7 @@ const CreationPage = () => {
     <div className="course-form-container">
       <form onSubmit={handleSubmit}>
         <label className="label" htmlFor="name">
-          Name
+          Course Name:
         </label>
         <input
           className="input"
@@ -97,6 +97,9 @@ const CreationPage = () => {
             </option>
           ))}
         </select>
+        <label className="label" htmlFor="grade">
+          Student:
+        </label>
         <select id="studentId" onChange={handleChange}>
           <option value="0"></option>
           {students.map((student) => (
