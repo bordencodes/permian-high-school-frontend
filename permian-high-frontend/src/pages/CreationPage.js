@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { BASE_URL } from '../services/api'
 
 const CreationPage = () => {
   const [grade, setGrade] = useState([])
@@ -15,23 +16,18 @@ const CreationPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(
-      'https://permian-high-backend.herokuapp.com/course',
-      formState
-    )
+    await axios.post(`${BASE_URL}courses`, formState)
     setFormState(initialFormState)
   }
 
   const GetGrades = async () => {
-    const res = await axios.get(
-      'https://permian-high-backend.herokuapp.com/grades'
-    )
+    const res = await axios.get(`${BASE_URL}grades`)
     setGrade(res.data)
   }
 
   useEffect(() => {
     GetGrades()
-  })
+  }, [])
 
   return (
     <div className="course-form-container">
