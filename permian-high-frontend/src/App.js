@@ -8,7 +8,7 @@ import Nav from './components/Nav'
 const App = () => {
   return (
     <main>
-      <header className="header">
+      <header>
         <Nav />
       </header>
       <Routes>
