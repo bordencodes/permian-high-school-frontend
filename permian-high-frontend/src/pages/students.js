@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
-import { useParams } from 'react-router-dom'
 
 const Students = () => {
   const [courses, setcourses] = useState([])
@@ -9,7 +8,6 @@ const Students = () => {
   const [searchResults, setSearchResults] = useState([])
   const [courseId, setCourseId] = useState()
   const [search, setSearch] = useState()
-  const { id } = useParams()
 
   useEffect(() => {
     const apiCall = async () => {
@@ -30,8 +28,14 @@ const Students = () => {
   const handleChange = (evt) => {
     setCourseId({ studentId: evt.target.value })
   }
-  const handleChange = (evt) => {
-    setSearch({ studentId: evt.target.value })
+  const handleId = (evt) => {
+    setSearch(evt.target.value)
+  }
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault()
+    let response = await axios.get(`${BASE_URL}courses/${courseId}`, search)
+    setSearchResults(response.data)
   }
 
   return (
@@ -46,8 +50,8 @@ const Students = () => {
           </ul>
         ))}
 
-        <form>
-          <select id="course" onChange={}>
+        <form onSubmit={handleSubmit}>
+          <select id="course" onChange={handleId}>
             <option></option>
             {courses.map((course) => (
               <option value={course.id} key={course.id}>
@@ -63,7 +67,7 @@ const Students = () => {
               </option>
             ))}
           </select>
-          <button>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     </div>
