@@ -6,8 +6,36 @@
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+    font-weight: bold;
+    margin: auto;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex inline;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 2.5vh;
+    width: 100%;
+    margin: 20px;
+
+}
+
 .navbar a {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center ;
     text-decoration: none;
+    color: black;
+    background-color: darkgray;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
 }
