@@ -138,12 +138,12 @@ const CreationPage = () => {
         </div>
       </div>
       {searchResults.length !== 0 ? (
-        <div className="student-container">
-          <section className="grid">
-            <ul key={searchResults.id}>
-              <h2>{searchResults.name}</h2>
-              <h3>{searchResults.students.name}</h3>
-              <h4>{searchResults.result.score}</h4>
+        <div className="course-container">
+          <section className="grid container-course">
+            <ul key={searchResults.id} className="students2">
+              <h2 className="student-title">{searchResults.name}</h2>
+              <h3 className="grade-container">{searchResults.students.name}</h3>
+              <h4 className="grade-container">{searchResults.result.score}</h4>
             </ul>
           </section>
         </div>
