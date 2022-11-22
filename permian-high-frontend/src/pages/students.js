@@ -124,24 +124,6 @@ const Students = () => {
             ))}
           </section>
         </div>
-        {students.map((student) => (
-          <ul key={student.id} id="studentsName">
-            <h2>{student.name}</h2>
-            {grades.map((grade) =>
-              student.name === grade.students.name ? (
-                <div>
-                  <p>{grade.name}</p>
-                  <p id="myGrade" value={grade.result.score}>
-                    {grade.result.score}
-                  </p>
-                  <p></p>
-                </div>
-              ) : (
-                <div></div>
-              )
-            )}
-          </ul>
-        ))}
       </div>
     </div>
   )
