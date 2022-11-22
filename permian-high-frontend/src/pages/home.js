@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div className="home-container">
-      <div className="home-header">
-        Welcome to Permian High School, home of the Panthers!
+      <div className="home-header">Home of the Panthers!</div>
+      <br />
+      <div>
+        <img
+          className="homescreen-img"
+          src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fexternal-content.duckduckgo.com%2Fiu%2F%3Fu%3Dhttps%253A%252F%252Fstatic.hudl.com%252Fusers%252Ftemp%252F728368_eef4b2aa343e4f19a8193e4ba5669b25.jpg%26f%3D1%26nofb%3D1%26ipt%3Dc58065eebdf6e74756e3389e44a6748a137fc5f32ce03ea85fe393704950eb69%26ipo%3Dimages"
+        ></img>
       </div>
       <br />
       <div className="home-items">
