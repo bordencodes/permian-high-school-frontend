@@ -77,7 +77,7 @@ const Students = () => {
           </label>
           <input
             id="name"
-            placeholder="name"
+            placeholder="Name"
             value={newStudent.name}
             onChange={handleChange}
           ></input>
@@ -86,7 +86,7 @@ const Students = () => {
           </label>
           <input
             id="email"
-            placeholder="email"
+            placeholder="Email"
             value={newStudent.email}
             onChange={handleChange}
           ></input>
@@ -95,11 +95,13 @@ const Students = () => {
           </label>
           <input
             id="schoolId"
-            placeholder="student ID"
+            placeholder="Student ID"
             value={newStudent.studentId}
             onChange={handleChange}
           ></input>
-          <button type="submit">Add Student</button>
+          <button className="student-button" type="submit">
+            Add Student
+          </button>
         </form>
       </div>
       <div>

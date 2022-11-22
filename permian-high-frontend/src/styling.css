@@ -8,41 +8,23 @@ form {
 
 .new-student-container {
   display: flex;
-  border-radius: 25px;
-  background: darkgray;
-  padding: 3px 15px;
-  margin: 75px auto;
-  width: 300px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 75px auto;
+    font-size: 16px;
+    background-color: darkgray;
+    border-radius: 25px;
+    width: 300px;
+    height: auto;
+    text-align: center;
 }
 
 .input {
     height: 3vh;
-    /* width: 10vw; */
     text-align: center;
     width: 100%;
     font-size: 16px;
   }
-
-#name {
-  height: 3vh;
-  width: 15vw;
-  text-align: center;
-  margin: 1vh 0 1vh 0;
-}
-
-#email {
-  height: 3vh;
-  width: 15vw;
-  text-align: center;
-  margin: 1vh 0 1vh 0;
-}
-
-#schoolId {
-  height: 3vh;
-  width: 10vw;
-  text-align: center;
-  margin: 1vh 0 1vh 0;
-}
 
 .grid {
   display: grid;
@@ -50,5 +32,11 @@ form {
 }
 
 .label {
+  font-weight: bold;
+  margin: 5px;
+}
+
+.student-button {
+  margin: 5px;
   font-weight: bold;
 }
