@@ -10,32 +10,36 @@ const Students = () => {
     email: '',
     schoolId: ''
   })
+  let arr = []
 
   const getGPA = (input1) => {
     let sum = 0
     for (let i = 0; i < input1.length; i++) {
       if (input1[i].studentId === input1[i].studentId) {
+        arr.push(input1[i].studentId)
         switch (input1[i].result.score) {
           case 'A':
-            sum = 4
+            sum += 4
             break
           case 'B':
-            sum = 3.0
+            sum += 3.0
             break
           case 'C':
-            sum = 2.0
+            sum += 2.0
             break
           case 'D':
-            sum = 1.0
+            sum += 1.0
             break
           case 'F':
-            sum = 0
+            sum += 0
             break
           default:
-            sum = 0
+            sum += 0
             break
         }
+        console.log()
       }
+      sum = sum / arr.length
       console.log(sum)
     }
   }
@@ -110,7 +114,6 @@ const Students = () => {
                     {grade.result.score}
                   </p>
                   <p></p>
-                  {/* <button ></button> */}
                 </div>
               ) : (
                 <div></div>
