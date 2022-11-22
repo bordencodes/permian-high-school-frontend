@@ -10,27 +10,58 @@ const Students = () => {
     email: '',
     schoolId: ''
   })
-  const [timeInterval, setTimeInterval] = useState(0)
+  // const [timeInterval, setTimeInterval] = useState(0)
 
-  setTimeout(() => {
-    setTimeInterval(timeInterval + 1)
-  }, 2000)
+  // setTimeout(() => {
+  //   setTimeInterval(timeInterval + 1)
+  // }, 2000)
+
+  const getGPA = (input) => {
+    let sum = 0
+
+    for (let i = 0; i < input.length; i++) {
+      console.log(input[i].result.score)
+      switch (input[i].result.score) {
+        case 'A':
+          sum += 4.0
+          break
+        case 'B':
+          sum += 3.0
+          break
+        case 'C':
+          sum += 2.0
+          break
+        case 'D':
+          sum += 1.0
+          break
+        case 'F':
+          sum += 0
+          break
+        default:
+          sum = 0
+          break
+      }
+    }
+    let newSum = sum / input.length
+    console.log(typeof input.length)
+    console.log(typeof sum)
+    console.log(newSum)
+  }
+  // getGPA()
 
   useEffect(() => {
-    const apiCall = async () => {
+    const getStudents = async () => {
       let response = await axios.get(`${BASE_URL}students`)
       setStudents(response.data)
     }
-    apiCall()
-  }, [])
-
-  useEffect(() => {
-    const apiCall = async () => {
+    getStudents()
+    const getGrades = async () => {
       let response = await axios.get(`${BASE_URL}courses`)
       setGrades(response.data)
     }
-    apiCall()
-  }, [timeInterval])
+    getGrades()
+    getGPA(grades)
+  }, [newStudent])
 
   const handleChange = (evt) => {
     setNewStudent({ ...newStudent, [evt.target.id]: evt.target.value })
@@ -40,26 +71,6 @@ const Students = () => {
     let response = await axios.post(`${BASE_URL}students`, newStudent)
     console.log(response)
     setNewStudent({ name: '', email: '', studentId: '' })
-  }
-  const GPA = (grades) => {
-    let sum = 0
-
-    for (let i = 0; i < grades.score.length; i++) {
-      switch (grades.score[i]) {
-        case 'A':
-          sum += 4.0
-        case 'B':
-          sum += 3.0
-        case 'C':
-          sum += 2.0
-        case 'D':
-          sum += 1.0
-        case 'F':
-          sum += 0
-      }
-    }
-    let newSum = sum / grades.score.length
-    console.log(newSum)
   }
 
   return (
@@ -96,7 +107,8 @@ const Students = () => {
                   <p id="myGrade" value={grade.result.score}>
                     {grade.result.score}
                   </p>
-                  <button onClick={GPA}></button>
+                  <p></p>
+                  {/* <button ></button> */}
                 </div>
               ) : (
                 <div></div>
