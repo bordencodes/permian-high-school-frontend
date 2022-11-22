@@ -137,15 +137,17 @@ const CreationPage = () => {
           </form>
         </div>
       </div>
-      <div className="student-container">
-        <section className="grid">
-          <ul key={searchResults.id}>
-            <h2>{searchResults.name}</h2>
-            <h3>{searchResults.students.name}</h3>
-            <h4>{searchResults.result.score}</h4>
-          </ul>
-        </section>
-      </div>
+      {searchResults.length !== 0 ? (
+        <div className="student-container">
+          <section className="grid">
+            <ul key={searchResults.id}>
+              <h2>{searchResults.name}</h2>
+              <h3>{searchResults.students.name}</h3>
+              <h4>{searchResults.result.score}</h4>
+            </ul>
+          </section>
+        </div>
+      ) : null}
     </div>
   )
 }
