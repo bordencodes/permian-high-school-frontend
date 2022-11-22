@@ -5,6 +5,21 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
+.home {
+    background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.hudl.com%2Fusers%2Ftemp%2F728368_eef4b2aa343e4f19a8193e4ba5669b25.jpg&f=1&nofb=1&ipt=c58065eebdf6e74756e3389e44a6748a137fc5f32ce03ea85fe393704950eb69&ipo=images) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.cell1 {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 18em 0 18em;
+    text-align: center;
+}
+
+/* header {
+    background-color: royalblue;
+} */
 
 .header {
     display: flex;
@@ -37,4 +52,8 @@
     border-radius: 25px;
     padding: 10px;
     cursor: pointer;
+}
+
+.welcome {
+    text-align: center;
 }

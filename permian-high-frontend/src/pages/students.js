@@ -41,14 +41,26 @@ const Students = () => {
     console.log(response)
     setNewStudent({ name: '', email: '', studentId: '' })
   }
-  let score = new Map()
-  score.set('A', 4)
-  score.set('B', 3)
-  score.set('C', 2)
-  score.set('D', 1)
-  score.set('F', 0)
-  let grade = document.getElementById('myGrade')
-  let getGpa = score.get(grade)
+  const GPA = (grades) => {
+    let sum = 0
+
+    for (let i = 0; i < grades.score.length; i++) {
+      switch (grades.score[i]) {
+        case 'A':
+          sum += 4.0
+        case 'B':
+          sum += 3.0
+        case 'C':
+          sum += 2.0
+        case 'D':
+          sum += 1.0
+        case 'F':
+          sum += 0
+      }
+    }
+    let newSum = sum / grades.score.length
+    console.log(newSum)
+  }
 
   return (
     <div>
@@ -75,16 +87,17 @@ const Students = () => {
       </form>
       <div>
         {students.map((student) => (
-          <ul key={student.id}>
+          <ul key={student.id} id="studentsName">
             <h2>{student.name}</h2>
             {grades.map((grade) =>
               student.name === grade.students.name ? (
-                <ul>
-                  <li>{grade.name}</li>
-                  <li id="myGrade" value={grade.result.score}>
+                <div>
+                  <p>{grade.name}</p>
+                  <p id="myGrade" value={grade.result.score}>
                     {grade.result.score}
-                  </li>
-                </ul>
+                  </p>
+                  <button onClick={GPA}></button>
+                </div>
               ) : (
                 <div></div>
               )
