@@ -10,44 +10,39 @@ const Students = () => {
     email: '',
     schoolId: ''
   })
-  // const [timeInterval, setTimeInterval] = useState(0)
+  let arr = []
 
-  // setTimeout(() => {
-  //   setTimeInterval(timeInterval + 1)
-  // }, 2000)
-
-  const getGPA = (input) => {
+  const getGPA = (input1) => {
     let sum = 0
-
-    for (let i = 0; i < input.length; i++) {
-      console.log(input[i].result.score)
-      switch (input[i].result.score) {
-        case 'A':
-          sum += 4.0
-          break
-        case 'B':
-          sum += 3.0
-          break
-        case 'C':
-          sum += 2.0
-          break
-        case 'D':
-          sum += 1.0
-          break
-        case 'F':
-          sum += 0
-          break
-        default:
-          sum = 0
-          break
+    for (let i = 0; i < input1.length; i++) {
+      if (input1[i].studentId === input1[i].studentId) {
+        arr.push(input1[i].studentId)
+        switch (input1[i].result.score) {
+          case 'A':
+            sum += 4
+            break
+          case 'B':
+            sum += 3.0
+            break
+          case 'C':
+            sum += 2.0
+            break
+          case 'D':
+            sum += 1.0
+            break
+          case 'F':
+            sum += 0
+            break
+          default:
+            sum += 0
+            break
+        }
+        console.log()
       }
+      sum = sum / arr.length
+      console.log(sum)
     }
-    let newSum = sum / input.length
-    console.log(typeof input.length)
-    console.log(typeof sum)
-    console.log(newSum)
   }
-  // getGPA()
 
   useEffect(() => {
     const getStudents = async () => {
@@ -129,25 +124,6 @@ const Students = () => {
             ))}
           </section>
         </div>
-        {students.map((student) => (
-          <ul key={student.id} id="studentsName">
-            <h2>{student.name}</h2>
-            {grades.map((grade) =>
-              student.name === grade.students.name ? (
-                <div>
-                  <p>{grade.name}</p>
-                  <p id="myGrade" value={grade.result.score}>
-                    {grade.result.score}
-                  </p>
-                  <p></p>
-                  {/* <button ></button> */}
-                </div>
-              ) : (
-                <div></div>
-              )
-            )}
-          </ul>
-        ))}
       </div>
     </div>
   )
