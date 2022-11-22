@@ -7,8 +7,10 @@ const CreationPage = () => {
   const [courses, setcourses] = useState([])
   const [students, setStudents] = useState([])
   const [searchResults, setSearchResults] = useState([])
-  const [courseId, setCourseId] = useState()
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState({
+    name: '',
+    studentId: 0
+  })
   const initialFormState = {
     name: '',
     gradeId: 0,
@@ -59,16 +61,19 @@ const CreationPage = () => {
   }, [])
 
   const handleChange2 = (evt) => {
-    setCourseId({ studentId: parseInt(evt.target.value) })
-  }
-  const handleId = (evt) => {
-    setSearch(evt.target.value)
+    setSearch({ ...search, [evt.target.id]: evt.target.value })
   }
 
-  const handleSubmit2 = async (evt) => {
+  const getCourse = async (evt) => {
     evt.preventDefault()
-    let response = await axios.get(`${BASE_URL}courses/${courseId}`, search)
+    let response = await axios.post(`${BASE_URL}courses/search`, search)
     setSearchResults(response.data)
+    setSearch({
+      name: '',
+      studentId: 0
+    })
+    document.getElementById('name').value = '0'
+    document.getElementById('studentId').value = '0'
   }
 
   return (
@@ -100,7 +105,7 @@ const CreationPage = () => {
         <select id="studentId" onChange={handleChange}>
           <option value="0"></option>
           {students.map((student) => (
-            <option value={parseInt(student.id)} key={student.id}>
+            <option value={student.id} key={student.id}>
               {student.name}
             </option>
           ))}
@@ -115,19 +120,19 @@ const CreationPage = () => {
             <h4>{course.result.score}</h4>
           </ul>
         ))}
-        <form onSubmit={handleSubmit2}>
-          <select id="course" onChange={handleId}>
+        <form onSubmit={getCourse}>
+          <select id="name" onChange={handleChange2}>
             <option value="0"></option>
             {courses.map((course) => (
-              <option value={course.id} key={course.id}>
+              <option value={course.name} key={course.id}>
                 {course.name}
               </option>
             ))}
           </select>
-          <select id="students" onChange={handleChange2}>
-            <option></option>
+          <select id="studentId" onChange={handleChange2}>
+            <option value="0"></option>
             {students.map((student) => (
-              <option value={student.id} key={student.id}>
+              <option value={Number(student.id)} key={student.id}>
                 {student.name}
               </option>
             ))}

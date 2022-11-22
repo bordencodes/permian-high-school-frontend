@@ -8,18 +8,13 @@ const Students = () => {
   const [newStudent, setNewStudent] = useState({
     name: '',
     email: '',
-    studentId: ''
+    schoolId: ''
   })
   const [timeInterval, setTimeInterval] = useState(0)
 
   setTimeout(() => {
     setTimeInterval(timeInterval + 1)
   }, 2000)
-
-  // let sum = 0
-  // let A = 4
-  // let B = 3
-  // let C = 2
 
   useEffect(() => {
     const apiCall = async () => {
@@ -42,18 +37,19 @@ const Students = () => {
   }
   const handleSubmit = async (evt) => {
     evt.preventDefault()
-    let response = await axios.post(`${BASE_URL}students`)
+    let response = await axios.post(`${BASE_URL}students`, newStudent)
     console.log(response)
     setNewStudent({ name: '', email: '', studentId: '' })
   }
+  let score = new Map()
+  score.set('A', 4)
+  score.set('B', 3)
+  score.set('C', 2)
+  score.set('D', 1)
+  score.set('F', 0)
+  let grade = document.getElementById('myGrade')
+  let getGpa = score.get(grade)
 
-  const getGPA = () => {
-    grades.map((grade) => {
-      if (grade.result.score === 'A') {
-        return 4
-      }
-    })
-  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -70,7 +66,7 @@ const Students = () => {
           onChange={handleChange}
         ></input>
         <input
-          id="studentId"
+          id="schoolId"
           placeholder="student ID"
           value={newStudent.studentId}
           onChange={handleChange}
@@ -85,7 +81,9 @@ const Students = () => {
               student.name === grade.students.name ? (
                 <ul>
                   <li>{grade.name}</li>
-                  <li>{grade.result.score}</li>
+                  <li id="myGrade" value={grade.result.score}>
+                    {grade.result.score}
+                  </li>
                 </ul>
               ) : (
                 <div></div>
