@@ -51,6 +51,7 @@ form {
 .student-title {
   background-color: gray;
   width: 100%;
+  text-align: center;
 }
 
 .grade-container {
@@ -62,6 +63,10 @@ li {
   padding: 1%;
   justify-content: flex-start;
   font-size: 150%;
+}
+
+ul {
+  padding: 0;
 }
 
 .courses {
