@@ -73,3 +73,8 @@ ul {
 .courses {
   font-weight: bold;
 }
+
+.container-course {
+  margin: 0 42% 0 42%;
+  width: 50%;
+}
