@@ -4,7 +4,6 @@ import { BASE_URL } from '../services/api'
 
 const CreationPage = () => {
   const [grade, setGrade] = useState([])
-  const [courses, setcourses] = useState([])
   const [students, setStudents] = useState([])
   const [searchResults, setSearchResults] = useState([])
   const [search, setSearch] = useState({
@@ -42,17 +41,6 @@ const CreationPage = () => {
 
   useEffect(() => {
     GetGrades()
-  }, [])
-
-  useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get(`${BASE_URL}courses`)
-      setcourses(response.data)
-    }
-    apiCall()
-  }, [timeInterval])
-
-  useEffect(() => {
     const apiCall = async () => {
       let response = await axios.get(`${BASE_URL}students`)
       setStudents(response.data)
@@ -77,74 +65,86 @@ const CreationPage = () => {
   }
 
   return (
-    <div className="course-form-container">
-      <form onSubmit={handleSubmit}>
-        <label className="label" htmlFor="name">
-          Course Name:
-        </label>
-        <input
-          className="input"
-          type="text"
-          id="name"
-          value={formState.name}
-          onChange={handleChange}
-          required
-        />
-        <br />
-        <label className="label" htmlFor="grade">
-          Grade:
-        </label>
-        <select className="input" id="gradeId" onChange={handleChange}>
-          <option value="0"></option>
-          {grade.map((scores) => (
-            <option value={parseInt(scores.id)} key={scores.id}>
-              {scores.score}
-            </option>
-          ))}
-        </select>
-        <br />
-        <label className="label" htmlFor="grade">
-          Student:
-        </label>
-        <select className="input" id="studentId" onChange={handleChange}>
-          <option value="0"></option>
-          {students.map((student) => (
-            <option value={student.id} key={student.id}>
-              {student.name}
-            </option>
-          ))}
-        </select>
-        <button className="course-form-button" type="submit">
-          Submit
-        </button>
-      </form>
-      <br />
-      <div>
-        <br />
-        <label className="label" htmlFor="grade">
-          Search By:
-        </label>
-        <form onSubmit={getCourse}>
-          <select className="input" id="name" onChange={handleChange2}>
-            <option value="0">Class</option>
-            <option>Bio</option>
-            <option>History</option>
-            <option>Math</option>
-            <option>Gym</option>
-            <option>Science</option>
+    <div>
+      <div className="course-form-container">
+        <form onSubmit={handleSubmit}>
+          <label className="label" htmlFor="name">
+            Course Name:
+          </label>
+          <input
+            className="input"
+            type="text"
+            id="name"
+            value={formState.name}
+            onChange={handleChange}
+            required
+          />
+          <br />
+          <label className="label" htmlFor="grade">
+            Grade:
+          </label>
+          <select className="input" id="gradeId" onChange={handleChange}>
+            <option value="0"></option>
+            {grade.map((scores) => (
+              <option value={parseInt(scores.id)} key={scores.id}>
+                {scores.score}
+              </option>
+            ))}
           </select>
-          <select className="input" id="studentId" onChange={handleChange2}>
-            <option value="0">Student Name</option>
+          <br />
+          <label className="label" htmlFor="grade">
+            Student:
+          </label>
+          <select className="input" id="studentId" onChange={handleChange}>
+            <option value="0"></option>
             {students.map((student) => (
-              <option value={Number(student.id)} key={student.id}>
+              <option value={student.id} key={student.id}>
                 {student.name}
               </option>
             ))}
           </select>
           <button className="course-form-button" type="submit">
-            Search
+            Submit
           </button>
         </form>
+        <br />
+        <div>
+          <br />
+          <label className="label" htmlFor="grade">
+            Search By:
+          </label>
+          <form onSubmit={getCourse}>
+            <select className="input" id="name" onChange={handleChange2}>
+              <option value="0">Class</option>
+              <option>Bio</option>
+              <option>History</option>
+              <option>Math</option>
+              <option>Gym</option>
+              <option>Science</option>
+              <option>Physics</option>
+            </select>
+            <select className="input" id="studentId" onChange={handleChange2}>
+              <option value="0">Student Name</option>
+              {students.map((student) => (
+                <option value={Number(student.id)} key={student.id}>
+                  {student.name}
+                </option>
+              ))}
+            </select>
+            <button className="course-form-button" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+      <div className="student-container">
+        <section className="grid">
+          <ul key={searchResults.id}>
+            <h2>{searchResults.name}</h2>
+            <h3>{searchResults.students.name}</h3>
+            <h4>{searchResults.result.score}</h4>
+          </ul>
+        </section>
       </div>
     </div>
   )

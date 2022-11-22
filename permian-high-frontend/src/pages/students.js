@@ -40,7 +40,7 @@ const Students = () => {
         console.log()
       }
       sum = sum / arr.length
-      console.log(sum)
+      return sum
     }
   }
 
@@ -111,6 +111,7 @@ const Students = () => {
                 {grades.map((grade) =>
                   student.name === grade.students.name ? (
                     <ul>
+                      <li></li>
                       <li>{grade.name}</li>
                       <li id="myGrade" value={grade.result.score}>
                         {grade.result.score}
