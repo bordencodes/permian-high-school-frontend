@@ -6,9 +6,40 @@ form {
     align-items: center;
   }
 
+.new-student-container {
+  display: flex;
+  border-radius: 25px;
+  background: darkgray;
+  padding: 3px 15px;
+  margin: 75px auto;
+  width: 300px;
+}
+
 .input {
     height: 3vh;
     width: 10vw;
     text-align: center;
   }
+
+#name {
+  height: 3vh;
+  width: 15vw;
+  text-align: center;
+  margin: 1vh 0 1vh 0;
+}
+
+#email {
+  height: 3vh;
+  width: 15vw;
+  text-align: center;
+  margin: 1vh 0 1vh 0;
+}
+
+#schoolId {
+  height: 3vh;
+  width: 10vw;
+  text-align: center;
+  margin: 1vh 0 1vh 0;
+}
+
 
