@@ -1,11 +1,3 @@
-/* .school-grid {
-    height: 90vh;
-    margin: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-} */
-
 .home-container {
     display: flex;
     flex-direction: column;
@@ -16,15 +8,16 @@
 }
 
 .home-header {
-    font-size: 2.5vh;
-    margin: 10px;
+    font-size: 3vh;
+    margin: 20px 0 0 0;
 }
 
 .home-items {
     display: flex;
     align-items: center;
     text-align: center;
-    margin: 0 0 20px 0;
+    font-weight: bold;
+    margin: 100px 0 20px 0;
 }
 
 .home-items a {
@@ -33,8 +26,11 @@
 }
 
 img {
-    max-width: 75%;
-    height: auto;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px 10px;
 }
 
 .header {
