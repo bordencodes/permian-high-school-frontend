@@ -10,27 +10,58 @@ const Students = () => {
     email: '',
     schoolId: ''
   })
-  const [timeInterval, setTimeInterval] = useState(0)
+  // const [timeInterval, setTimeInterval] = useState(0)
 
-  setTimeout(() => {
-    setTimeInterval(timeInterval + 1)
-  }, 2000)
+  // setTimeout(() => {
+  //   setTimeInterval(timeInterval + 1)
+  // }, 2000)
+
+  const getGPA = (input) => {
+    let sum = 0
+
+    for (let i = 0; i < input.length; i++) {
+      console.log(input[i].result.score)
+      switch (input[i].result.score) {
+        case 'A':
+          sum += 4.0
+          break
+        case 'B':
+          sum += 3.0
+          break
+        case 'C':
+          sum += 2.0
+          break
+        case 'D':
+          sum += 1.0
+          break
+        case 'F':
+          sum += 0
+          break
+        default:
+          sum = 0
+          break
+      }
+    }
+    let newSum = sum / input.length
+    console.log(typeof input.length)
+    console.log(typeof sum)
+    console.log(newSum)
+  }
+  // getGPA()
 
   useEffect(() => {
-    const apiCall = async () => {
+    const getStudents = async () => {
       let response = await axios.get(`${BASE_URL}students`)
       setStudents(response.data)
     }
-    apiCall()
-  }, [])
-
-  useEffect(() => {
-    const apiCall = async () => {
+    getStudents()
+    const getGrades = async () => {
       let response = await axios.get(`${BASE_URL}courses`)
       setGrades(response.data)
     }
-    apiCall()
-  }, [timeInterval])
+    getGrades()
+    getGPA(grades)
+  }, [newStudent])
 
   const handleChange = (evt) => {
     setNewStudent({ ...newStudent, [evt.target.id]: evt.target.value })
@@ -41,14 +72,6 @@ const Students = () => {
     console.log(response)
     setNewStudent({ name: '', email: '', studentId: '' })
   }
-  let score = new Map()
-  score.set('A', 4)
-  score.set('B', 3)
-  score.set('C', 2)
-  score.set('D', 1)
-  score.set('F', 0)
-  let grade = document.getElementById('myGrade')
-  let getGpa = score.get(grade)
 
   return (
     <div>
@@ -106,6 +129,25 @@ const Students = () => {
             ))}
           </section>
         </div>
+        {students.map((student) => (
+          <ul key={student.id} id="studentsName">
+            <h2>{student.name}</h2>
+            {grades.map((grade) =>
+              student.name === grade.students.name ? (
+                <div>
+                  <p>{grade.name}</p>
+                  <p id="myGrade" value={grade.result.score}>
+                    {grade.result.score}
+                  </p>
+                  <p></p>
+                  {/* <button ></button> */}
+                </div>
+              ) : (
+                <div></div>
+              )
+            )}
+          </ul>
+        ))}
       </div>
     </div>
   )
