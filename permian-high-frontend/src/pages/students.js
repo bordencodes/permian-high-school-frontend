@@ -85,23 +85,27 @@ const Students = () => {
         </form>
       </div>
       <div>
-        {students.map((student) => (
-          <ul key={student.id}>
-            <h2>{student.name}</h2>
-            {grades.map((grade) =>
-              student.name === grade.students.name ? (
-                <ul>
-                  <li>{grade.name}</li>
-                  <li id="myGrade" value={grade.result.score}>
-                    {grade.result.score}
-                  </li>
-                </ul>
-              ) : (
-                <div></div>
-              )
-            )}
-          </ul>
-        ))}
+        <div className="student-container">
+          <section className="grid">
+            {students.map((student) => (
+              <ul key={student.id}>
+                <h2>{student.name}</h2>
+                {grades.map((grade) =>
+                  student.name === grade.students.name ? (
+                    <ul>
+                      <li>{grade.name}</li>
+                      <li id="myGrade" value={grade.result.score}>
+                        {grade.result.score}
+                      </li>
+                    </ul>
+                  ) : (
+                    <div></div>
+                  )
+                )}
+              </ul>
+            ))}
+          </section>
+        </div>
       </div>
     </div>
   )

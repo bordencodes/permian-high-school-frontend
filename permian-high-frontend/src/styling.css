@@ -42,4 +42,11 @@ form {
   margin: 1vh 0 1vh 0;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr;
+}
 
+.label {
+  font-weight: bold;
+}
