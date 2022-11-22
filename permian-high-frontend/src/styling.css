@@ -40,3 +40,30 @@ form {
   margin: 5px;
   font-weight: bold;
 }
+
+.students2 {
+  border: 2px solid black;
+  margin: .5em;
+  text-decoration: none;
+  justify-content: flex-start;
+}
+
+.student-title {
+  background-color: gray;
+  width: 100%;
+}
+
+.grade-container {
+  display: flex;
+  list-style: none;
+}
+
+li {
+  padding: 1%;
+  justify-content: flex-start;
+  font-size: 150%;
+}
+
+.courses {
+  font-weight: bold;
+}

@@ -108,13 +108,12 @@ const Students = () => {
         <div className="student-container">
           <section className="grid">
             {students.map((student) => (
-              <ul key={student.id}>
-                <h2>{student.name}</h2>
+              <ul key={student.id} className="students2">
+                <h2 className="student-title">{student.name}</h2>
                 {grades.map((grade) =>
                   student.name === grade.students.name ? (
-                    <ul>
-                      <li></li>
-                      <li>{grade.name}</li>
+                    <ul className="grade-container">
+                      <li className="courses">{grade.name}</li>
                       <li id="myGrade" value={grade.result.score}>
                         {grade.result.score}
                       </li>
