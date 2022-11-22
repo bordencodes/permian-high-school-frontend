@@ -75,27 +75,38 @@ const Students = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          id="name"
-          placeholder="name"
-          value={newStudent.name}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="email"
-          placeholder="email"
-          value={newStudent.email}
-          onChange={handleChange}
-        ></input>
-        <input
-          id="schoolId"
-          placeholder="student ID"
-          value={newStudent.studentId}
-          onChange={handleChange}
-        ></input>
-        <button type="submit">Add Student</button>
-      </form>
+      <div className="new-student-container">
+        <form onSubmit={handleSubmit}>
+          <label className="label" htmlFor="name">
+            New Student Name:
+          </label>
+          <input
+            id="name"
+            placeholder="name"
+            value={newStudent.name}
+            onChange={handleChange}
+          ></input>
+          <label className="label" htmlFor="email">
+            New Student Email:
+          </label>
+          <input
+            id="email"
+            placeholder="email"
+            value={newStudent.email}
+            onChange={handleChange}
+          ></input>
+          <label className="label" htmlFor="id">
+            New Student ID:
+          </label>
+          <input
+            id="schoolId"
+            placeholder="student ID"
+            value={newStudent.studentId}
+            onChange={handleChange}
+          ></input>
+          <button type="submit">Add Student</button>
+        </form>
+      </div>
       <div>
         {students.map((student) => (
           <ul key={student.id} id="studentsName">
