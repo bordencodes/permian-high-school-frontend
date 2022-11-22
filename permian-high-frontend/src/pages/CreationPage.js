@@ -124,7 +124,7 @@ const CreationPage = () => {
               <option>Physics</option>
             </select>
             <select className="input" id="studentId" onChange={handleChange2}>
-              <option value="0">Student Name</option>
+              <option>Student Name</option>
               {students.map((student) => (
                 <option value={Number(student.id)} key={student.id}>
                   {student.name}
