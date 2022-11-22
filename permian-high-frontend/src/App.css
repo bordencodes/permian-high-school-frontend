@@ -1,9 +1,36 @@
-.school-grid {
-    height: 90vh;
-    margin: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+}
+
+.home-header {
+    font-size: 3vh;
+    margin: 20px 0 0 0;
+}
+
+.home-items {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin: 100px 0 20px 0;
+}
+
+.home-items a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px 10px;
 }
 .home {
     background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.hudl.com%2Fusers%2Ftemp%2F728368_eef4b2aa343e4f19a8193e4ba5669b25.jpg&f=1&nofb=1&ipt=c58065eebdf6e74756e3389e44a6748a137fc5f32ce03ea85fe393704950eb69&ipo=images) no-repeat center center fixed;
