@@ -17,8 +17,10 @@ form {
 
 .input {
     height: 3vh;
-    width: 10vw;
+    /* width: 10vw; */
     text-align: center;
+    width: 100%;
+    font-size: 16px;
   }
 
 #name {

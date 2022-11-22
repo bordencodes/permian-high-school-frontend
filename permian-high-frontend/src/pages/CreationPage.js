@@ -90,10 +90,10 @@ const CreationPage = () => {
           onChange={handleChange}
           required
         />
+        <br />
         <label className="label" htmlFor="grade">
           Grade:
         </label>
-
         <select className="input" id="gradeId" onChange={handleChange}>
           <option value="0"></option>
           {grade.map((scores) => (
@@ -102,10 +102,11 @@ const CreationPage = () => {
             </option>
           ))}
         </select>
+        <br />
         <label className="label" htmlFor="grade">
           Student:
         </label>
-        <select id="studentId" onChange={handleChange}>
+        <select className="input" id="studentId" onChange={handleChange}>
           <option value="0"></option>
           {students.map((student) => (
             <option value={student.id} key={student.id}>
@@ -113,34 +114,36 @@ const CreationPage = () => {
             </option>
           ))}
         </select>
-        <button type="submit">Submit</button>
+        <button className="course-form-button" type="submit">
+          Submit
+        </button>
       </form>
+      <br />
       <div>
-        {courses.map((course) => (
-          <ul key={course.id}>
-            <h2>{course.name}</h2>
-            <h3>{course.students.name}</h3>
-            <h4>{course.result.score}</h4>
-          </ul>
-        ))}
+        <br />
+        <label className="label" htmlFor="grade">
+          Search By:
+        </label>
         <form onSubmit={getCourse}>
-          <select id="name" onChange={handleChange2}>
-            <option value="0"></option>
-            {courses.map((course) => (
-              <option value={course.name} key={course.id}>
-                {course.name}
-              </option>
-            ))}
+          <select className="input" id="name" onChange={handleChange2}>
+            <option value="0">Class</option>
+            <option>Bio</option>
+            <option>History</option>
+            <option>Math</option>
+            <option>Gym</option>
+            <option>Science</option>
           </select>
-          <select id="studentId" onChange={handleChange2}>
-            <option value="0"></option>
+          <select className="input" id="studentId" onChange={handleChange2}>
+            <option value="0">Student Name</option>
             {students.map((student) => (
               <option value={Number(student.id)} key={student.id}>
                 {student.name}
               </option>
             ))}
           </select>
-          <button type="submit">Submit</button>
+          <button className="course-form-button" type="submit">
+            Search
+          </button>
         </form>
       </div>
     </div>
