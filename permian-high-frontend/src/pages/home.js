@@ -2,19 +2,20 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div>
-      <div className="welcome">
+    <div className="home-container">
+      <div className="home-header">
         Welcome to Permian High School, home of the Panthers!
       </div>
-      <div className="school-grid">
-        <div className="cell1">School Info</div>
+      <br />
+      <div className="home-items">
+        <div className="home-info">School Info</div>
         <Link to={'/students'}>
-          <div className="cell2">Students</div>
+          <div className="home-students">Students</div>
         </Link>
         <Link to={'/courses'}>
-          <div className="cell3">Courses</div>
+          <div className="home-courses">Courses</div>
         </Link>
-        <div className="cell4">Permian Atletics</div>
+        <div className="home-athletics">Permian Athletics</div>
       </div>
     </div>
   )

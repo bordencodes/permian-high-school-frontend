@@ -1,9 +1,34 @@
-.school-grid {
+/* .school-grid {
     height: 90vh;
     margin: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+} */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+}
+
+.home-header {
+    font-size: 2.5vh;
+    margin: 10px;
+}
+
+.home-items {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.home-items a {
+    text-decoration: none;
+    color: black;
 }
 
 .header {
